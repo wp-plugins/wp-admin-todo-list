@@ -3,7 +3,7 @@
  * Plugin Name:  WP Admin Todo List
  * Description:  Admin side Todo list , which helps you to remember any task easily. 
  * Plugin URI:   http://shyammakwana.me
- * Version:      0.1
+ * Version:      1.2
  * Text Domain:  wp_admin_todo_list
  * Author:       Shyam Makwana
  * Author URI:   http://shyammakwana.me/
@@ -260,7 +260,7 @@ function my_admin_footer_function() {
 		
 		
 		
-		echo '<div class="sm_at_div_wrapper" style="display:none">
+		echo '<div class="sm_at_div_wrapper" style="">
 			<h2>Todo List </h2>
 			<div class="sm_at_controls"><i class="add_new_note" onclick="add_new_note()"><button>Add</button></i></div>
 			<!--<textarea onkeyup="return sm_at_process_textarea(this);" onchange="return sm_at_process_textarea(this);" class="sm_at_textarea" rows="5" cols="20">'.get_option('sm_at_data').'</textarea>
@@ -272,7 +272,6 @@ function my_admin_footer_function() {
 			?>
 			<p class="sm_at_textarea_div" <?php echo ($key == 0 )? 'id="sm_at_textarea_div"':''; ?> contenteditableXX  onkeyup="">
 				<span class="draggable_handle">:::</span>	
-				<?php /* <textarea oninput="return sm_at_process_textarea(this);" name="sm_at_textarea_div_input" ><?php echo html_entity_decode($sm_at_data); ?></textarea> */ ?>
 				<input type="text" oninput="return sm_at_process_textarea(this,event);" onkeyup="return check_key(event, this);" name="sm_at_textarea_div_input" class="sm_at_textarea_div_input" value="<?php echo $line ;  ?>"/>
 			</p>
 			<?php } ?>

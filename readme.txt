@@ -4,7 +4,7 @@ Donate link: http://shyammakwana.me
 Tags: admin todo list, todo list,admin todo, wp admin todo list,list
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 1.01
+Stable tag: 1.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -89,11 +89,20 @@ WP Admin Todo List is free software, built by an individual PHP/WordPress develo
 
 == Changelog ==
 
+= 1.2 =
+* Bug fixed, todo block was not showing on refresh
+
+
 = 1.0 =
 * A change since the previous version.
 * Another change.
 
 == Upgrade Notice ==
 
+= 1.2 =
+* Bug fixed, todo block was not showing on refresh
+See: http://shyammakwana.me
+
 = 1.1 =
+* A change since the previous version.
 See: http://shyammakwana.me
