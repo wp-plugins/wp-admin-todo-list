@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  WP Admin Todo List
  * Description:  Admin side Todo list , which helps you to remember any task easily. 
- * Plugin URI:   http://shyammakwana.me
+ * Plugin URI:   http://shyammakwana.me/wp-admin-todo-list-wordpress-plugin
  * Version:      1.2.3
  * Text Domain:  wp_admin_todo_list
  * Author:       Shyam Makwana
