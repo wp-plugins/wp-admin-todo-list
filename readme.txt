@@ -6,7 +6,7 @@ Plugin URI: http://shyammakwana.me/wp-admin-todo-list-wordpress-plugin
 Tags: admin todo list, todo list,admin todo, wp admin todo list,list
 Requires at least: 3.0
 Tested up to: 4.1.1
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -94,7 +94,7 @@ WP Admin Todo List is free software, built by an individual PHP/WordPress develo
 
 == Changelog ==
 
-= 1.2.3 =
+= 1.2.4 =
 * Feature : Different Todo block for each individual user
 * Feature : Display and hide block Database fallback
 * Feature : Remove button for each todo on hover
@@ -109,7 +109,7 @@ WP Admin Todo List is free software, built by an individual PHP/WordPress develo
 == Upgrade Notice ==
 
 
-= 1.2.3 =
+= 1.2.4 =
 * Feature : Different Todo block for each individual user
 * Feature : Display and hide block Database fallback
 * Feature : Remove button for each todo on hover
