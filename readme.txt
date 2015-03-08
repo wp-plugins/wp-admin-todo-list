@@ -1,10 +1,12 @@
 === WP Admin Todo List ===
 Contributors: shyammakwana
 Donate link: http://shyammakwana.me
+Author URI: http://shyammakwana.me
+Plugin URI: http://shyammakwana.me/wp-admin-todo-list-wordpress-plugin
 Tags: admin todo list, todo list,admin todo, wp admin todo list,list
-Requires at least: 3.0.1
-Tested up to: 4.1
-Stable tag: 1.2
+Requires at least: 3.0
+Tested up to: 4.1.1
+Stable tag: 1.2.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -18,11 +20,14 @@ WP Admin Todo List plugin is to keep list of all the tasks you want to do. This 
 *	Extremely Lightweight (No more space needed)
 *	Totally AJAX Based (No reload headache)
 *	Auto save, (you just worry about typing task, we will handle rest)
-*	Cookie based hide/show feature (No reload headache)
+*	Cookie based hide/show feature (No reload headache) + database based (fallback)
 *	Drag and Drop support for each task 
 *	Rearrange your tasks (auto save works with this also)
 *	No extra database tables
 *	User friendly UI - Enter key to create new todo, Backspace key to remove. 
+*	Different Todo block for each individual user
+*	Remove button for each todo on hover
+
 
 = More Information =
 
@@ -89,20 +94,30 @@ WP Admin Todo List is free software, built by an individual PHP/WordPress develo
 
 == Changelog ==
 
+= 1.2.3 =
+* Feature : Different Todo block for each individual user
+* Feature : Display and hide block Database fallback
+* Feature : Remove button for each todo on hover
+
 = 1.2 =
 * Bug fixed, todo block was not showing on refresh
 
 
 = 1.0 =
 * A change since the previous version.
-* Another change.
 
 == Upgrade Notice ==
 
+
+= 1.2.3 =
+* Feature : Different Todo block for each individual user
+* Feature : Display and hide block Database fallback
+* Feature : Remove button for each todo on hover
+
 = 1.2 =
 * Bug fixed, todo block was not showing on refresh
-See: http://shyammakwana.me
+See: http://shyammakwana.me/wp-admin-todo-list-wordpress-plugin
 
 = 1.1 =
 * A change since the previous version.
-See: http://shyammakwana.me
+See: http://shyammakwana.me/wp-admin-todo-list-wordpress-plugin

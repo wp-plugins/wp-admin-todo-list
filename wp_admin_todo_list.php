@@ -45,6 +45,7 @@ function sm_admin_todo_js() {
 	wp_enqueue_script( 'jquery-ui-draggable');
 	wp_enqueue_script( 'jquery-ui-droppable');
 	
+	//print_r ( get_theme_mod('background_color') ); die;
 	
 ?>		
 	<script type="text/javascript">
@@ -52,16 +53,29 @@ function sm_admin_todo_js() {
 		var cookieName = 'sm_at_div_wrapper';
 		
 		function show_todo(el) {
-			
+			var block_state = '' ; 
 			jQuery('.sm_at_div_wrapper').toggle();
 			if(jQuery('.sm_at_div_wrapper').is(':visible')) {
 				//console.log('visible');
 				document.cookie = 'sm_at_div_wrapper=block';
+				block_state = 'block';
 			}
 			else {
 				//console.log('none');
 				document.cookie = 'sm_at_div_wrapper=none';
+				block_state = 'none';
 			}
+			
+			
+			jQuery.ajax({
+					url : "<?php echo admin_url('admin-ajax.php'); ?>" ,				
+					data : {action : 'sm_at_visibility'  , 'sm_at_block_visibility' : block_state} ,
+					method: 'post',
+					success: function (dataReturn){
+						console.log(dataReturn); 
+					}
+				});
+				
 			return false; 
 		}
 		
@@ -156,11 +170,12 @@ function sm_admin_todo_js() {
 	
 		jQuery(function() {
 			
+			
 			var myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)sm_at_div_wrapper\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-			
-			
+						
 			if (myCookie == 'none')
 				jQuery('.sm_at_div_wrapper').hide();
+			
 			
 			
 			jQuery( ".todos" ).sortable({
@@ -183,6 +198,17 @@ function sm_admin_todo_js() {
 			jQuery( ".todos" ).on( "sortstop", function( event, ui ) { 
 				sm_at_remove_empty();
 			});
+			
+			
+			// remove todo 
+			//.sm_at_textarea_div .sm_delete_todo 
+			jQuery(document).on( "click",".sm_at_textarea_div .sm_delete_todo", function( event, ui ) { 
+				jQuery(this).closest('.sm_at_textarea_div').remove();
+				sm_at_remove_empty();
+				
+			});
+			
+			
 		});
 
 	</script>
@@ -219,6 +245,7 @@ function my_admin_footer_function() {
 		margin: 0 0 3px 0 ;
 		background: lightyellow;
 		padding: 3px 2px;
+		position: relative; 
 		//border : 1px dashed #555;
 	}
 	.sm_at_div_wrapper p.sm_at_status {
@@ -249,18 +276,40 @@ function my_admin_footer_function() {
 		padding: 3px; 
 		background: #ddd;
 	}
+	
+	.sm_delete_todo {
+		position: absolute;
+		top: 8px;
+		font-size: 13px;
+		right: 3px;
+		border: 1px solid #777;
+		color: #fff;
+		background: #777;
+		border-radius: 25px;
+		padding: 3px;
+		line-height: 0.6;
+		height: 8px;
+		display:none;
+		cursor: pointer;
+	}
+	.sm_at_div_wrapper .sm_at_textarea_div:hover  .sm_delete_todo {
+		display:block;
+	}
 	</style>';
 	
 	if (isset($_GET['debug']) or 1) {
 		
-		$sm_at_data = unserialize(( get_option('sm_at_data') )) ; 
+		$sm_at_data = unserialize(( get_option('sm_at_data_'.get_current_user_id()) )) ; 
 		if ($sm_at_data == null OR count($sm_at_data) <= 0 ) {
 			$sm_at_data = array('Enter your todo list.');
-		}
+		}		
 		
+		$sm_at_block_visibility = get_option('sm_at_block_visibility_'.get_current_user_id() );
+		if ($sm_at_block_visibility == null OR $sm_at_block_visibility  == '' ) {
+			$sm_at_block_visibility = 'block';
+		}		
 		
-		
-		echo '<div class="sm_at_div_wrapper" style="">
+		echo '<div class="sm_at_div_wrapper" style="display:'.$sm_at_block_visibility.'">
 			<h2>Todo List </h2>
 			<div class="sm_at_controls"><i class="add_new_note" onclick="add_new_note()"><button>Add</button></i></div>
 			<!--<textarea onkeyup="return sm_at_process_textarea(this);" onchange="return sm_at_process_textarea(this);" class="sm_at_textarea" rows="5" cols="20">'.get_option('sm_at_data').'</textarea>
@@ -273,6 +322,7 @@ function my_admin_footer_function() {
 			<p class="sm_at_textarea_div" <?php echo ($key == 0 )? 'id="sm_at_textarea_div"':''; ?> contenteditableXX  onkeyup="">
 				<span class="draggable_handle">:::</span>	
 				<input type="text" oninput="return sm_at_process_textarea(this,event);" onkeyup="return check_key(event, this);" name="sm_at_textarea_div_input" class="sm_at_textarea_div_input" value="<?php echo $line ;  ?>"/>
+				<span class="sm_delete_todo">x</span>				
 			</p>
 			<?php } ?>
 		</div>
@@ -285,9 +335,26 @@ add_action('wp_ajax_sm_at_save_data' , 'sm_at_save_data') ;
 function sm_at_save_data() {
 	$data = array_filter($_REQUEST['sm_at_data']);
 		
-	if(update_option('sm_at_data',serialize(( $data )))) {
+	if(update_option('sm_at_data_'.get_current_user_id(),serialize(( $data )))) {
 		return 'Saved.';
 	}else {
+		return 'Failed.';
+	}
+	//return true ; 
+	return 'Failed.';
+	wp_die();
+}
+
+add_action('wp_ajax_sm_at_visibility' , 'sm_at_visibility') ; 
+function sm_at_visibility() {
+	
+	$data = $_REQUEST['sm_at_block_visibility'];
+		
+	if(update_option('sm_at_block_visibility_'.get_current_user_id(), htmlentities($data) )) {
+		echo htmlentities($data) ;
+		return htmlentities($data) ;
+	}else {
+		echo 'Failed.';
 		return 'Failed.';
 	}
 	//return true ; 
