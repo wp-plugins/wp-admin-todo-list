@@ -6,7 +6,7 @@ Plugin URI: http://shyammakwana.me/wp-admin-todo-list-wordpress-plugin
 Tags: admin todo list, todo list,admin todo, wp admin todo list,list
 Requires at least: 3.0
 Tested up to: 4.1.1
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -27,6 +27,9 @@ WP Admin Todo List plugin is to keep list of all the tasks you want to do. This 
 *	User friendly UI - Enter key to create new todo, Backspace key to remove. 
 *	Different Todo block for each individual user
 *	Remove button for each todo on hover
+*	Cookie based Minimize/Maximize feature. 
+
+
 
 
 = More Information =
@@ -91,8 +94,14 @@ WP Admin Todo List is free software, built by an individual PHP/WordPress develo
 4. Movable todo list block. 
 5. Button in admin bar, to show/hide todo section (Without reload).
 6. After first install.
+7. Minimized block, to free up more space of screen. 
 
 == Changelog ==
+
+= 1.2.5 =
+* Bug fixed : Data lost after upgrading from 1.2 to 1.2.4, issue fixed, data restored.
+* Bug fixed : Add new todo was not working after removing all todo's
+* Feature : Cookie based Minimize/Mazimize feature. 
 
 = 1.2.4 =
 * Feature : Different Todo block for each individual user
@@ -109,8 +118,13 @@ WP Admin Todo List is free software, built by an individual PHP/WordPress develo
 == Upgrade Notice ==
 
 
+= 1.2.5 =
+* Bug fixed : Data lost after upgrading from 1.2 to 1.2.4, issue fixed, data restored.
+* Bug fixed : Add new todo was not working after removing all todo's
+* Feature : Cookie based Minimize/Mazimize feature. 
+
 = 1.2.4 =
-* Feature : Different Todo block for each individual user
+* Feature : Different Todo for each individual user
 * Feature : Display and hide block Database fallback
 * Feature : Remove button for each todo on hover
 
