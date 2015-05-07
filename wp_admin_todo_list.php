@@ -143,6 +143,21 @@ function sm_admin_todo_js() {
 				jQuery("#sm_at_todos").append(newField);
 			}
 
+			adjust_div_height(); 
+
+		}
+
+		
+		// adjust div height - to apply overflow scroll and height 
+		function adjust_div_height() {
+			
+			var a = jQuery(window).height();
+			var b = jQuery('.sm_at_div_wrapper').offset().top;
+			var c = jQuery('.sm_at_div_wrapper').height();
+			
+			//jQuery(window).height() -  jQuery('.sm_at_div_wrapper').offset().top - 86 - 25 
+			var maxheight = a - b - 86 - 25 ; 
+			jQuery('#sm_at_todos').css('max-height', maxheight+'px');	
 		}
 
 
@@ -224,6 +239,7 @@ function sm_admin_todo_js() {
 			jQuery(document).on( "click",".sm_at_textarea_div .sm_delete_todo", function( event, ui ) {
 				jQuery(this).closest('.sm_at_textarea_div').remove();
 				sm_at_remove_empty();
+				adjust_div_height(); 
 
 			});
 			
@@ -254,6 +270,10 @@ function sm_admin_todo_js() {
 				});
 				
 			});
+			
+			// adjust div's height to control div going outside of window
+			adjust_div_height();
+			
 
 		});
 
@@ -270,10 +290,11 @@ function my_admin_footer_function() {
 		z-index: 99999;
 		background: #FFF;
 		width:350px;
+		border: 1px solid #e5e5e5;
 	}
 	.sm_at_div_wrapper h2 {
 		cursor: move;
-		background: brown;
+		background: #0073aa;
 		color: #FFF;
 		padding: 7px 10px;
 		display: block;
@@ -289,7 +310,7 @@ function my_admin_footer_function() {
 	.sm_at_div_wrapper .sm_at_textarea_div {
 		overflow: auto;
 		margin: 0 0 3px 0 ;
-		background: lightyellow;
+		background: #f7fcfe;
 		padding: 3px 2px;
 		position: relative;
 		//border : 1px dashed #555;
@@ -301,6 +322,7 @@ function my_admin_footer_function() {
 		padding: 7px 10px;
 		display: block;
 		margin: 0;
+		border-top: 1px solid #e5e5e5;
 	}
 	.draggable_handle {
 		padding: 3px;
@@ -321,7 +343,7 @@ function my_admin_footer_function() {
 
 	.sm_at_controls {
 		padding: 3px;
-		background: #ddd;
+		background: #eaeaea;
 	}
 
 	.sm_delete_todo {
@@ -359,6 +381,10 @@ function my_admin_footer_function() {
 		right: 10px;
 		padding: 0 4px;
 		cursor: pointer;
+	}
+	
+	#sm_at_todos {
+		overflow-y : auto; 
 	}
 	
 	</style>';
