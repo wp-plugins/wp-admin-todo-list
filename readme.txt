@@ -5,8 +5,8 @@ Author URI: http://shyammakwana.me
 Plugin URI: http://shyammakwana.me/wp-admin-todo-list-wordpress-plugin
 Tags: admin todo list, todo list,admin todo, wp admin todo list,list
 Requires at least: 3.0
-Tested up to: 4.1.1
-Stable tag: 1.2.5
+Tested up to: 4.2.2
+Stable tag: 1.2.6 
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
