@@ -98,6 +98,9 @@ WP Admin Todo List is free software, built by an individual PHP/WordPress develo
 
 == Changelog ==
 
+= 1.2.6 =
+* Bug fixed : Todo list was going outside of window.
+
 = 1.2.5 =
 * Bug fixed : Data lost after upgrading from 1.2 to 1.2.4, issue fixed, data restored.
 * Bug fixed : Add new todo was not working after removing all todo's
@@ -117,6 +120,8 @@ WP Admin Todo List is free software, built by an individual PHP/WordPress develo
 
 == Upgrade Notice ==
 
+= 1.2.6 =
+* Bug fixed : Lengthy todo list goes outside window height, update to fix this bug.
 
 = 1.2.5 =
 * Bug fixed : Data lost after upgrading from 1.2 to 1.2.4, issue fixed, data restored.
